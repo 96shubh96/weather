@@ -69,17 +69,17 @@ feedparser.parseUrl(urls).on('article',function(article){
 feeds.push(article);
 //console.log(feeds.title);
 });
-console.log(feeds);
+
 app.get("/rss",function(req,res){
 
-console.log(feeds);
+
 if(req.user)
 res.render('rss.ejs',{feedo:feeds,userN:req.user.username});
 else res.render('forbidden.ejs');
 });
 app.get('/logout', function(req, res) {
 req.logout();
-console.log("hfksjfks",req.user);
+
 res.redirect('/');
 
 });
