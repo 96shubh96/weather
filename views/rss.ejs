@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>RSS Feeds - Stream</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/rss.css">
+</head>
+
+<body >
+<nav class="navbar navbar-default navbar-fixed-top" style="background-color: #ff7;">
+      <div class="container"style="color:#111">
+        <div class="navbar-header"style="color:#111">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li ><a href="#"><strong>Get In Touch With FEDO Blog</strong></a></li>
+           </ul>
+          <ul class="nav navbar-nav navbar-right">
+            
+            <li><a href="weather"><strong>Weather</strong></a></li>
+            <li><a href="/logout"><strong>Logout</strong></a></li>
+            <% if (userN.length > 0) { %>
+                <h5 align="center"style="color:#080">Welcome--<%= userN %></h5>
+            <% } %>
+          </ul>
+          
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+<div class="nav-bar">
+<h3>Get in Touch with FEDO</h3>
+
+</div>
+
+<div class="container">
+<% feedo.forEach(function(ind){ %>
+<div class="article">
+ <h2 align="center"style="color:#129"><%=ind.title%></h2>
+ <p align="center" style="color:#291"><strong> <%=ind.author%> - <%=ind.pubdate%></strong> <br />
+ <strong><%-ind.description%></strong>
+ </p>
+ </div> <br/>
+ <br/>
+  <% }) %>
+  </div>
+         
+       
+
+</body>
+</html>

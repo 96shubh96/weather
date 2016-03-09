@@ -1,0 +1,86 @@
+ <!DOCTYPE html>
+  <html>
+    <head>
+      <title>WeatheRss.com</title>
+      <link rel="stylesheet" type="text/css" href="/css/mystyle.css">
+       <link rel="stylesheet" href="http://jqueryvalidation.org/files/demo/site-demos.css">
+       
+       <script src="/js/min.js"></script>
+      <script  type="text/javascript" src="/js/mystyle.js"></script>
+      <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+      <script src="http://jqueryvalidation.org/files/dist/jquery.validate.min.js"></script>
+      <script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script> 
+   	</head>
+
+    <body>
+	  <div class="heading">
+     <h2 align="center" >Welcome To WeatherRSS.com</h2> 
+    </div>
+    <div class="login-box">
+    <div class="lb-header">
+      <a href="#" class="active" id="login-box-link">Login</a>
+      <a href="#" id="signup-box-link">Sign Up</a>
+    </div>
+    <% if (message.length > 0) { %>
+                <div class="alert alert-danger"align="center"style="background-color:#f00"><%= message %></div>
+            <% } %>
+            <% if (message1.length > 0) { %>
+                <div class="alert alert-danger"align="center"style="background-color:#f00"><%= message1 %></div>
+            <% } %>
+    <form class="email-login" method="POST" action="/login" id="login_form">
+      <div class="u-form-group">
+         <label for="username"></label>
+        <input  class="left"type="email" placeholder="Email" name="email" />
+      </div>
+      <div class="u-form-group">
+        <label for="password"></label>
+        <input class="left"type="password" placeholder="Password" name="password" id="password"/>
+      </div>
+      <div class="u-form-group">
+        <button type="submit" value="submit" name="action" href="weather">Log in</button>
+      </div>
+      <div class="u-form-group">
+        <a href="#" class="forgot-password">Forgot password?</a>
+      </div>
+    </form>
+    <form class="email-signup" method="POST" action="/signup" >
+      <div class="u-form-group">
+        <label for="username"></label>
+        <input  class="left" type="email" placeholder="Email" name="username"/>
+      </div>
+      <div class="u-form-group">
+        <label for="spassword"></label>
+        <input class="left"type="password" placeholder="Password" name="spassword" id="spassword"/>
+      </div>
+      <div class="u-form-group">
+        <label for="password_again"></label>
+        <input type="password" class="left"placeholder="Confirm Password" name="password_again" id="password_again"/>
+      </div>
+      <div class="u-form-group">
+        <button type="submit" id="submit" value="submit" href="weather" name="action">Sign Up</button>
+      </div>
+    </form>
+  </div>
+  <script>
+        jQuery.validator.setDefaults({
+// debug: true,
+success: "valid"
+}); 
+        $( ".email-signup" ).validate({
+        rules: {
+        spassword: {
+         required:true,
+         rangelength:[6,10]
+        },
+        password_again: {
+        equalTo: "#spassword"
+        }
+      }
+        
+        });
+        
+        </script> 
+
+
+    </body>
+  </html>
