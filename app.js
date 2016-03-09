@@ -26,7 +26,7 @@ function DB(){
 var connection =mysql.createConnection({
 		host:'127.0.0.1',
 	 user:'root',
-	 password:'kumar1234',
+	 password:'root',
 	 database:'user'
 });
 connection.connect();

@@ -13,7 +13,7 @@ function DB(){
 var connection =mysql.createConnection({
 		host:'127.0.0.1',
 	 user:'root',
-	 password:'kumar1234',
+	 password:'root',
 	 database:'user'
 });
 connection.connect();
@@ -24,12 +24,11 @@ module.exports = function(passport) {
 	var ob=new DB();
 
 passport.serializeUser(function(user, done) {
-	console.log("***",user);
 done(null, user.id);
 });
 // used to deserialize the user
-passport.deserializeUser(function(id, done) {console.log("####",id);
-ob.query("select * from user_info where id = "+id,function(err,rows){  console.log("$$$$",rows);
+passport.deserializeUser(function(id, done) 
+ob.query("select * from user_info where id = "+id,function(err,rows){  
 done(err, rows[0]);
 });
 });
@@ -42,7 +41,6 @@ passReqToCallback : true
 // passReqToCallback : true // allows us to pass back the entire request to the callback
 },
 function(req,username, password, done) { // callback with email and password from our form
-	console.log(username,"  ",password)
 ob.query("SELECT * FROM user_info WHERE username = ?",[username], function(err, rows){
 	// console.log("Error:",err,"  Result:",rows);
 if (err)
@@ -51,7 +49,6 @@ if (!rows.length) {
 return done(null, false,req.flash('loginMessage', 'No user found.')); // req.flash is the way to set flashdata using connect-flash
 }
 // if the user is found but the password is wrong
-console.log(rows);
 if (password != rows[0].password)
 return done(null, false,req.flash('loginMessage', 'Oops! Wrong password.')); // create the loginMessage and save it to session as flashdata
 // all is well, return successful user
